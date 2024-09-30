@@ -1,0 +1,16 @@
+{
+  "sticker-card-title-rev": "Общий доход",
+  "sticker-card-subtitle-rev": "(Последние 30 дней)",
+  "sticker-card-title-order": "Общее количество заказов",
+  "sticker-card-title-vendor": "Продавец",
+  "sticker-card-subtitle-order": "(Последние 30 дней)",
+  "sticker-card-title-customer": "Новый клиент",
+  "sticker-card-subtitle-customer": "(Последние 30 дней)",
+  "sticker-card-title-today-rev": "Доход за сегодня",
+  "sticker-card-subtitle-last-1-days": "Сегодня (Последние 24 часа)",
+  "sticker-card-subtitle-last-7-days": "Еженедельно (Последние 7 дней)",
+  "sticker-card-subtitle-last-30-days": "Ежемесячно (Последние 30 дней)",
+  "sticker-card-subtitle-last-365-days": "Ежегодно (Последние 365 дней)",
+  "sticker-card-title-total-shops": "Всего магазинов",
+  "sticker-card-title-today-refunds": "Возвраты за сегодня"
+}
