@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 const VisitStore = () => {
   const { t } = useTranslation();
   const { pathname, query } = useRouter();
-  const slug = (pathname === '/[shop]' && `shops/${query?.shop}`) || '/';
+  const slug = (pathname === '/[shop]' && `shops/${query?.shop}`) || '';
 
   return (
     <>

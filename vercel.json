@@ -1,7 +1,7 @@
 {
   "env": {
     "NEXT_PUBLIC_REST_API_ENDPOINT": "https://us-central1-borisik-products.cloudfunctions.net/api",
-    "NEXT_PUBLIC_SHOP_URL": "https://borisik-shop.vercel.app",
+    "NEXT_PUBLIC_SHOP_URL": "https://redcaviar.ae",
     "NEXT_PUBLIC_GOOGLE_MAP_API_KEY": "mapss",
     "NEXT_PUBLIC_AUTH_TOKEN_KEY": "AUTH_CRED",
     "APPLICATION_MODE": "production",
@@ -22,7 +22,7 @@
   "build": {
     "env": {
       "NEXT_PUBLIC_REST_API_ENDPOINT": "https://us-central1-borisik-products.cloudfunctions.net/api",
-      "NEXT_PUBLIC_SHOP_URL": "https://borisik-shop.vercel.app",
+      "NEXT_PUBLIC_SHOP_URL": "https://redcaviar.ae",
       "NEXT_PUBLIC_GOOGLE_MAP_API_KEY": "",
       "NEXT_PUBLIC_AUTH_TOKEN_KEY": "AUTH_CRED",
       "APPLICATION_MODE": "production",

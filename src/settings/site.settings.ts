@@ -516,16 +516,16 @@ export const siteSettings = {
                 label: 'text-seo-settings',
                 icon: 'StoreNoticeIcon',
               },
-              {
-                href: Routes.eventSettings,
-                label: 'text-events-settings',
-                icon: 'RefundsIcon',
-              },
-              {
-                href: Routes.shopSettings,
-                label: 'text-shop-settings',
-                icon: 'RefundsIcon',
-              },
+              // {
+              //   href: Routes.eventSettings,
+              //   label: 'text-events-settings',
+              //   icon: 'RefundsIcon',
+              // },
+              // {
+              //   href: Routes.shopSettings,
+              //   label: 'text-shop-settings',
+              //   icon: 'RefundsIcon',
+              // },
               {
                 href: Routes?.maintenance,
                 label: 'text-maintenance-settings',

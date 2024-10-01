@@ -195,7 +195,7 @@ export default function Dashboard() {
           </h3>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-1 xl:grid-cols-3">
           <StickerCard
             titleTransKey="sticker-card-title-rev"
             subtitleTransKey="sticker-card-subtitle-rev"
@@ -216,12 +216,12 @@ export default function Dashboard() {
             color="#D74EFF"
             price={data?.totalVendors}
           />
-          <StickerCard
+          {/* <StickerCard
             titleTransKey="sticker-card-title-total-shops"
             icon={<BasketIcon className="h-8 w-8" />}
             color="#E157A0"
             price={data?.totalShops}
-          />
+          /> */}
         </div>
       </div>
 

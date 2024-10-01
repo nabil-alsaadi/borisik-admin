@@ -15,7 +15,7 @@ import dayjs from 'dayjs';
 import { adminOnly, getAuthCredentials, hasAccess } from '@/utils/auth-utils';
 import { Routes } from '@/config/routes';
 import { MessageAvatarPlaceholderIcon } from '@/components/icons/message-avatar-placeholder-icon';
-import { PusherConfig } from '@/utils/pusher-config';
+// import { PusherConfig } from '@/utils/pusher-config';
 import { toast } from 'react-toastify';
 import { Config } from '@/config';
 
@@ -49,28 +49,28 @@ const MessageBar = ({ user }: IProps) => {
   };
   const activeStatus = conversations.find(({ unseen }) => unseen);
 
-  useEffect(() => {
-    if (Config.broadcastDriver === 'pusher' && Config.pusherEnable === 'true') {
-      const channelName =
-        `${process.env.NEXT_PUBLIC_MESSAGE_CHANNEL_PRIVATE}` + '.' + user?.id;
-      const channel = PusherConfig.subscribe(channelName);
+  // useEffect(() => {
+  //   if (Config.broadcastDriver === 'pusher' && Config.pusherEnable === 'true') {
+  //     const channelName =
+  //       `${process.env.NEXT_PUBLIC_MESSAGE_CHANNEL_PRIVATE}` + '.' + user?.id;
+  //     const channel = PusherConfig.subscribe(channelName);
 
-      channel.bind(`${process.env.NEXT_PUBLIC_MESSAGE_EVENT}`, (data: any) => {
-        allNotice.push(data);
-        //@ts-ignore
-        setNotice(allNotice);
-        toast.success(data?.message, {
-          toastId: 'messageSuccess',
-        });
-      });
+  //     channel.bind(`${process.env.NEXT_PUBLIC_MESSAGE_EVENT}`, (data: any) => {
+  //       allNotice.push(data);
+  //       //@ts-ignore
+  //       setNotice(allNotice);
+  //       toast.success(data?.message, {
+  //         toastId: 'messageSuccess',
+  //       });
+  //     });
 
-      return () => {
-        PusherConfig.unsubscribe(channelName);
-      };
-    } else {
-      PusherConfig.disconnect();
-    }
-  }, [notice]);
+  //     return () => {
+  //       PusherConfig.unsubscribe(channelName);
+  //     };
+  //   } else {
+  //     PusherConfig.disconnect();
+  //   }
+  // }, [notice]);
 
   // here messages will be passed as a props in eventData. to keep the useEffect track of having a new message
   return (

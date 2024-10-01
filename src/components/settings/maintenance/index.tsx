@@ -41,13 +41,14 @@ export default function MaintenanceSettingsForm({ settings }: IProps) {
   } = useForm<MaintenanceFormValues>({
     shouldUnregister: true,
     // @ts-ignore
-    resolver: yupResolver(maintenanceValidationSchema),
+    // resolver: yupResolver(maintenanceValidationSchema),
     defaultValues: {
       ...options,
     },
   });
 
   async function onSubmit(values: MaintenanceFormValues) {
+    console.log('onSubmit(values: MaintenanceFormValues) {')
     updateSettingsMutation({
       language: locale,
       // @ts-ignore // // FIXME
@@ -93,7 +94,7 @@ export default function MaintenanceSettingsForm({ settings }: IProps) {
           </div>
         </Card>
       </div>
-      <div className="flex flex-wrap pb-8 my-5 border-b border-dashed border-border-base sm:my-8">
+      {/* <div className="flex flex-wrap pb-8 my-5 border-b border-dashed border-border-base sm:my-8">
         <Description
           title={t('form:input-label-maintenance-cover-image')}
           details={maintenanceImageInformation}
@@ -323,7 +324,7 @@ export default function MaintenanceSettingsForm({ settings }: IProps) {
             disabled={!isMaintenanceMode}
           />
         </Card>
-      </div>
+      </div> */}
 
       <StickyFooterPanel className="z-0">
         <Button

@@ -15,7 +15,7 @@ import timezone from 'dayjs/plugin/timezone';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 import { adminOnly, getAuthCredentials, hasAccess } from '@/utils/auth-utils';
-import { PusherConfig } from '@/utils/pusher-config';
+// import { PusherConfig } from '@/utils/pusher-config';
 import { toast } from 'react-toastify';
 import { Routes } from '@/config/routes';
 import { useRouter } from 'next/router';
@@ -116,31 +116,31 @@ const RecentOrderBar = ({ user }: IProps) => {
     return Boolean(item?.is_read) === false;
   });
 
-  useEffect(() => {
-    if (Config.broadcastDriver === 'pusher' && Config.pusherEnable === 'true') {
-      const channelName =
-        `${process.env.NEXT_PUBLIC_ORDER_CREATED_CHANNEL_PRIVATE}` +
-        '.' +
-        user?.id;
-      const channel = PusherConfig.subscribe(channelName);
+  // useEffect(() => {
+  //   if (Config.broadcastDriver === 'pusher' && Config.pusherEnable === 'true') {
+  //     const channelName =
+  //       `${process.env.NEXT_PUBLIC_ORDER_CREATED_CHANNEL_PRIVATE}` +
+  //       '.' +
+  //       user?.id;
+  //     const channel = PusherConfig.subscribe(channelName);
 
-      channel.bind(
-        `${process.env.NEXT_PUBLIC_ORDER_CREATED_EVENT}`,
-        function (data: any) {
-          allOrder.push(data);
-          setOrder(allOrder);
-          toast.success(data?.message, {
-            toastId: 'orderSuccess',
-          });
-        }
-      );
-      return () => {
-        PusherConfig.unsubscribe(channelName);
-      };
-    } else {
-      PusherConfig.disconnect();
-    }
-  }, [order]);
+  //     channel.bind(
+  //       `${process.env.NEXT_PUBLIC_ORDER_CREATED_EVENT}`,
+  //       function (data: any) {
+  //         allOrder.push(data);
+  //         setOrder(allOrder);
+  //         toast.success(data?.message, {
+  //           toastId: 'orderSuccess',
+  //         });
+  //       }
+  //     );
+  //     return () => {
+  //       PusherConfig.unsubscribe(channelName);
+  //     };
+  //   } else {
+  //     PusherConfig.disconnect();
+  //   }
+  // }, [order]);
 
   return (
     <>

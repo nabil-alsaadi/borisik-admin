@@ -15,7 +15,7 @@ import {
   ownerOnly,
 } from '@/utils/auth-utils';
 import { Routes } from '@/config/routes';
-import { PusherConfig } from '@/utils/pusher-config';
+// import { PusherConfig } from '@/utils/pusher-config';
 import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
 import { useNotifyLogAllReadMutation } from '@/data/notify-logs';
@@ -55,32 +55,32 @@ const StoreNoticeBar = ({ user }: IProps) => {
     return item.is_read === false;
   });
 
-  useEffect(() => {
-    if (Config.broadcastDriver === 'pusher' && Config.pusherEnable === 'true') {
-      const channelName =
-        `${process.env.NEXT_PUBLIC_STORE_NOTICE_CREATED_CHANNEL_PRIVATE}` +
-        '.' +
-        user?.id;
-      const channel = PusherConfig.subscribe(channelName);
+  // useEffect(() => {
+  //   if (Config.broadcastDriver === 'pusher' && Config.pusherEnable === 'true') {
+  //     const channelName =
+  //       `${process.env.NEXT_PUBLIC_STORE_NOTICE_CREATED_CHANNEL_PRIVATE}` +
+  //       '.' +
+  //       user?.id;
+  //     const channel = PusherConfig.subscribe(channelName);
 
-      channel.bind(
-        `${process.env.NEXT_PUBLIC_STORE_NOTICE_CREATED_EVENT}`,
-        function (data: any) {
-          allNotice.push(data);
-          setNotice(allNotice);
-          toast.success(data?.message, {
-            toastId: 'storeSuccess',
-          });
-        }
-      );
+  //     channel.bind(
+  //       `${process.env.NEXT_PUBLIC_STORE_NOTICE_CREATED_EVENT}`,
+  //       function (data: any) {
+  //         allNotice.push(data);
+  //         setNotice(allNotice);
+  //         toast.success(data?.message, {
+  //           toastId: 'storeSuccess',
+  //         });
+  //       }
+  //     );
 
-      return () => {
-        PusherConfig.unsubscribe(channelName);
-      };
-    } else {
-      PusherConfig.disconnect();
-    }
-  }, [notice]);
+  //     return () => {
+  //       PusherConfig.unsubscribe(channelName);
+  //     };
+  //   } else {
+  //     PusherConfig.disconnect();
+  //   }
+  // }, [notice]);
 
   return (
     <>
