@@ -45,7 +45,7 @@ const ConfirmationCard: React.FC<ConfirmationCardProps> = ({
             {t(description)}
           </p>
           <div className="flex items-center justify-between w-full mt-8 space-s-4">
-            <div className="w-1/2">
+            <div className="w-1/2 p-5">
               <Button
                 onClick={onCancel}
                 loading={cancelBtnLoading}
@@ -60,7 +60,7 @@ const ConfirmationCard: React.FC<ConfirmationCardProps> = ({
               </Button>
             </div>
 
-            <div className="w-1/2">
+            <div className="w-1/2 p-5">
               <Button
                 onClick={onDelete}
                 loading={deleteBtnLoading}

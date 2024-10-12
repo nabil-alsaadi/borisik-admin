@@ -15,6 +15,7 @@ import { orderClient } from './client/order';
 import { useRouter } from 'next/router';
 import { Routes } from '@/config/routes';
 import { applyOrderTranslations } from '@/utils/format-ordered-product';
+// import { isAuth } from '@/utils/auth-utils';
 
 export const useOrdersQuery = (
   params: Partial<OrderQueryOptions>,
@@ -28,6 +29,7 @@ export const useOrdersQuery = (
     {
       keepPreviousData: true,
       ...options,
+      // enabled: isAuth(),
     }
   );
   const res = data?.data ?? []

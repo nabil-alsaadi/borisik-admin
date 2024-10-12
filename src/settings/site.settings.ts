@@ -7,11 +7,11 @@ import {
 import { Routes } from '@/config/routes';
 
 export const siteSettings = {
-  name: 'PickBazar',
+  name: 'Borisik',
   description: '',
   logo: {
     url: '/logo.svg',
-    alt: 'PickBazar',
+    alt: 'Borisik',
     href: '/',
     width: 138,
     height: 34,
@@ -57,7 +57,7 @@ export const siteSettings = {
       permission: adminOwnerAndStaffOnly,
     },
   ],
-  currencyCode: 'USD',
+  currencyCode: 'AED',
   sidebarLinks: {
     admin: {
       root: {
@@ -402,7 +402,19 @@ export const siteSettings = {
           },
         ],
       },
-
+      others: {
+        href: Routes.publications.list,
+        label: 'text-content-career',
+        icon: 'OrdersIcon',
+        childMenu: [
+          {
+            href: Routes.publications.list,
+            label: 'sidebar-nav-item-publications',
+            icon: 'OrdersIcon',
+          },
+          
+        ],
+      },
       // feedback: {
       //   href: '',
       //   label: 'text-feedback-control',

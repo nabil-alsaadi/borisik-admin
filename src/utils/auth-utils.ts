@@ -69,3 +69,12 @@ export function isAuthenticated(_cookies: any) {
     !!_cookies[PERMISSIONS].length
   );
 }
+
+// export function isAuth() {
+//   const _cookies = getAuthCredentials('en')
+//   return (
+//     !!_cookies[TOKEN] &&
+//     Array.isArray(_cookies[PERMISSIONS]) &&
+//     !!_cookies[PERMISSIONS].length
+//   );
+// }

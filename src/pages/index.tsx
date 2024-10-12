@@ -40,6 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     !isAuthenticated({ token, permissions }) ||
     !hasAccess(allowedRoles, permissions)
   ) {
+    console.log('is authenticated condtion is being called in getServerSideProps ===============')
     return {
       redirect: {
         destination: generateRedirectUrl,

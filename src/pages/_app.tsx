@@ -20,6 +20,7 @@ import type { NextPageWithLayout } from '@/types';
 import { useRouter } from 'next/router';
 import PrivateRoute from '@/utils/private-route';
 import { Config } from '@/config';
+import { setAuthCredentials } from '@/utils/auth-utils';
 const Noop: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <>{children}</>
 );
@@ -41,7 +42,8 @@ const CustomApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const authProps = (Component as any).authenticate;
   const [queryClient] = useState(() => new QueryClient());
   const getLayout = Component.getLayout ?? ((page) => page);
-
+  // setAuthCredentials("dsfsdf",["super_admin","customer"],"super_admin")
+  // console.log('setAuthCredentials("dsfsdf",["super_admin","customer"])')
   const { locale } = useRouter();
   const dir = Config.getDirection(locale);
   return (

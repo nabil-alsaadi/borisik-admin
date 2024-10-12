@@ -657,5 +657,12 @@
   "text-review-system": "Review mechanism",
   "input-tooltip-review-system": "In this feature Super admin can control review system. Either each product can be reviewed by one customer only one time, or customer can reviewed the same product on each order. Incase of Digital Product if customer gave review already then he/she can update it.",
   "input-tooltip-enable-review-popup": "When a customer's order is completed, then a pop-up box will appear in the shop end to inform customer about giving a review",
-  "text-video-tooltip": "Please enter your Iframe embed code here."
+  "text-video-tooltip": "Please enter your Iframe embed code here.",
+  "button-label-add-publication": "Add Publication",
+  "error-publication-name-required": "Publication title is required",
+  "button-label-update-publication": "Update Publication",
+  "publication-image-helper-text": "Add Publication's  image from here.",
+  "publication-form-description-details": "Publication information from here.",
+  "form-title-create-publication": "Create Publication",
+  "form-title-update-publication": "Update Publication"
 }

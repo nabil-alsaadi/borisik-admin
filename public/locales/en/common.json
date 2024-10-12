@@ -546,5 +546,8 @@
   "text-all-coupons": "All coupons",
   "text-new-coupon": "Add new coupon",
   "text-popup-settings": "Promo Popup",
-  "text-image-uploading-message": "Please wait! Image is uploading"
+  "text-image-uploading-message": "Please wait! Image is uploading",
+  "text-publications": "Publications",
+  "sidebar-nav-item-publications": "Publications",
+  "text-content-career": "Content & Careers"
 }

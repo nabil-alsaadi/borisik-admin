@@ -40,7 +40,7 @@ export const useSettingsQuery = ({ language }: { language: string }) => {
   const { data, error, isLoading } = useQuery<Settings, Error>(
     [API_ENDPOINTS.SETTINGS, { language }],
     () => settingsClient.all({ language }),
-    QUERY_CLIENT_OPTIONS
+    {retry: 0,...QUERY_CLIENT_OPTIONS}
   );
 
   return {

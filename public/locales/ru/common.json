@@ -552,5 +552,9 @@
   "text-all-coupons": "Все купоны",
   "text-new-coupon": "Добавить новый купон",
   "text-popup-settings": "Настройки всплывающих окон",
-  "text-image-uploading-message": "Пожалуйста, подождите! Изображение загружается"
+  "text-image-uploading-message": "Пожалуйста, подождите! Изображение загружается",
+  "text-publications": "Публикации",
+  "sidebar-nav-item-publications": "Публикации",
+  "text-content-career": "Контент и карьера"
+
 }

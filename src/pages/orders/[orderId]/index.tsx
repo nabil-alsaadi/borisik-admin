@@ -360,7 +360,7 @@ export default function OrderDetailsPage() {
             </div>
           </div>
 
-          <div className="mb-10 w-full sm:mb-0 sm:w-1/2 sm:pe-8">
+          {/* <div className="mb-10 w-full sm:mb-0 sm:w-1/2 sm:pe-8">
             <h3 className="mb-3 border-b border-border-200 pb-2 font-semibold text-heading">
               {t('common:billing-address')}
             </h3>
@@ -372,7 +372,7 @@ export default function OrderDetailsPage() {
               )}
               {order?.customer_contact && <span>{phoneNumber}</span>}
             </div>
-          </div>
+          </div> */}
 
           <div className="w-full sm:w-1/2 sm:ps-8">
             <h3 className="mb-3 border-b border-border-200 pb-2 font-semibold text-heading text-start sm:text-end">

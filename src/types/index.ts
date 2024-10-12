@@ -862,6 +862,21 @@ export interface Author {
   updated_at?: string;
 }
 
+export interface Publication {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  image?: Attachment;
+  translations?: {
+      [languageCode: string]: {
+          name: string;
+          description: string;
+      };
+  };
+  created_at: Date;
+}
+
 export interface CreateAuthorInput {
   bio?: string;
   born?: string;
@@ -875,6 +890,13 @@ export interface CreateAuthorInput {
   shop_id?: string;
   socials?: ShopSocialInput[];
 }
+
+export interface CreatePublicationInput {
+  title: string;
+  description: string;
+  image?: Attachment;
+}
+
 export interface CreateRefundPolicyInput {
   title: string;
   slug: string;
@@ -1762,6 +1784,9 @@ export interface AuthorQueryOptions extends QueryOptions {
   name: string;
   is_approved?: boolean;
 }
+export interface PublicationQueryOptions extends QueryOptions {
+  name: string;
+}
 export interface RefundPolicyQueryOptions extends QueryOptions {
   title: string;
   target: string;
@@ -1976,6 +2001,8 @@ export interface AttributeValuePaginator
 export interface ShippingPaginator extends PaginatorInfo<Shipping> {}
 
 export interface AuthorPaginator extends PaginatorInfo<Author> {}
+
+export interface PublicationPaginator extends PaginatorInfo<Publication> {}
 
 export interface RefundPolicyPaginator extends PaginatorInfo<RefundPolicy> {}
 

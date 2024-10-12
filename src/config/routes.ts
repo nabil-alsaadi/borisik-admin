@@ -52,6 +52,9 @@ export const Routes = {
   author: {
     ...routesFactory('/authors'),
   },
+  publications: {
+    ...routesFactory('/publications'),
+  },
   coupon: {
     ...routesFactory('/coupons'),
   },
