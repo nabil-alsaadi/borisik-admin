@@ -16,6 +16,8 @@ export const API_ENDPOINTS = {
   SHIPPINGS: 'shippings',
   SETTINGS: 'settings',
   CATEGORIES: 'categories',
+  VACANCIES: 'vacancies',
+  VACANCIES_APPLICATIONS: 'applications',
   TAGS: 'tags',
   TYPES: 'types',
   PROFILE_UPDATE: 'profile-update',

@@ -666,5 +666,14 @@
   "publication-image-helper-text": "Добавьте изображение публикации здесь.",
   "publication-form-description-details": "Информация о публикации отсюда.",
   "form-title-create-publication": "Создать публикацию",
-  "form-title-update-publication": "Обновить публикацию"
+  "form-title-update-publication": "Обновить публикацию",
+
+  "button-label-add-vacancy": "Добавить вакансию",
+  "button-label-add-requirement": "Добавить требование",
+  "placeholder-requirement": "Введите требование",
+  "input-label-requirements": "Требования",
+  "input-label-location": "Местоположение",
+  "vacancy-form-description-details": "Добавьте информацию о вакансии здесь.",
+  "button-label-update-vacancy": "Обновить вакансию",
+  "input-label-applications": "Заявки на вакансии"
 }

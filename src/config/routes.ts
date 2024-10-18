@@ -31,6 +31,12 @@ export const Routes = {
   category: {
     ...routesFactory('/categories'),
   },
+  vacancy: {
+    ...routesFactory('/vacancies'),
+  },
+  applications: {
+    ...routesFactory('/applications'),
+  },
   attribute: {
     ...routesFactory('/attributes'),
   },

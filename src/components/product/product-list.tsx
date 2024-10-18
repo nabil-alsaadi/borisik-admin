@@ -40,8 +40,7 @@ const ProductList = ({
   onSort,
   onOrder,
 }: IProps) => {
-  // const { data, paginatorInfo } = products! ?? {};
-  console.log('products=============',products)
+
   const router = useRouter();
   const {
     query: { shop },

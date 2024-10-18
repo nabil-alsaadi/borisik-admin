@@ -107,6 +107,9 @@ const AuthorDeleteView = dynamic(
 const PublicationDeleteView = dynamic(
   () => import('@/components/publication/publication-delete-view'),
 );
+const VacancyDeleteView = dynamic(
+  () => import('@/components/vacancy/vacancy-delete-view'),
+);
 const ManufacturerDeleteView = dynamic(
   () => import('@/components/manufacturer/manufacturer-delete-view'),
 );
@@ -184,6 +187,8 @@ function renderModal(view: MODAL_VIEWS | undefined, data: any) {
       return <AuthorDeleteView />;
     case 'DELETE_PUBLICATION':
       return <PublicationDeleteView />
+    case 'DELETE_VACANCY':
+      return <VacancyDeleteView />
     case 'BAN_CUSTOMER':
       return <BanCustomerView />;
     case 'SHOP_APPROVE_VIEW':

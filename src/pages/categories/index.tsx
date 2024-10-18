@@ -61,14 +61,6 @@ export default function Categories() {
               placeholderText={t('form:input-placeholder-search-name')}
             />
 
-            <TypeFilter
-              className="md:ms-6"
-              onTypeFilter={(type: Type) => {
-                setType(type?.slug!);
-                setPage(1);
-              }}
-            />
-
             {locale === Config.defaultLanguage && (
               <LinkButton
                 href={`${Routes.category.create}`}

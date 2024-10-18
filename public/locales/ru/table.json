@@ -98,5 +98,6 @@
   "table-item-url": "Домены",
   "table-item-target": "Применено к",
   "table-item-coupon-amount": "Сумма купона",
-  "table-item-minimum-cart-amount": "Минимальная сумма корзины"
+  "table-item-minimum-cart-amount": "Минимальная сумма корзины",
+  "table-item-vacancy": "Вакансия"
 }

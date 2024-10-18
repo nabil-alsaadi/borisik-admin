@@ -14,6 +14,12 @@ import { useIsRTL } from '@/utils/locals';
 import Avatar from '@/components/common/avatar';
 import { NoDataFound } from '@/components/icons/no-data-found';
 
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import dayjs from 'dayjs';
+
+
 type IProps = {
   publications: Publication[] | undefined;
   paginatorInfo: MappedPaginatorInfo | null;
@@ -57,15 +63,7 @@ const PublicationList = ({
 
   let columns = [
     {
-      title: (
-        <TitleWithSort
-          title={t('table:table-item-id')}
-          ascending={
-            sortingObj.sort === SortOrder.Asc && sortingObj.column === 'id'
-          }
-          isActive={sortingObj.column === 'id'}
-        />
-      ),
+      title: t('table:table-item-id'),
       className: 'cursor-pointer',
       dataIndex: 'id',
       key: 'id',
@@ -75,15 +73,7 @@ const PublicationList = ({
       render: (id: number) => `#${t('table:table-item-id')}: ${id}`,
     },
     {
-      title: (
-        <TitleWithSort
-          title={t('table:table-item-title')}
-          ascending={
-            sortingObj.sort === SortOrder.Asc && sortingObj.column === 'title'
-          }
-          isActive={sortingObj.column === 'title'}
-        />
-      ),
+      title: t('table:table-item-title'),
       dataIndex: 'title',
       key: 'title',
       className: 'cursor-pointer',
@@ -144,6 +134,40 @@ const PublicationList = ({
     //     );
     //   },
     // },
+    {
+      title: (
+        <TitleWithSort
+          title={t('table:table-item-date')}
+          ascending={
+            sortingObj?.sort === SortOrder?.Asc &&
+            sortingObj?.column === 'created_at'
+          }
+          isActive={sortingObj?.column === 'created_at'}
+          className="cursor-pointer"
+        />
+      ),
+      dataIndex: 'created_at',
+      key: 'created_at',
+      width: 130,
+      align: 'right',
+      onHeaderCell: () => onHeaderClick('created_at'),
+      _render: (date: string) => {
+          dayjs.extend(relativeTime);
+          dayjs.extend(utc);
+          dayjs.extend(timezone);
+          return (
+              <span className="whitespace-nowrap">
+                  {dayjs.utc(date).tz(dayjs.tz.guess()).fromNow()}
+              </span>
+          );
+      },
+      get render() {
+          return this._render;
+      },
+      set render(value) {
+          this._render = value;
+      },
+    },
     {
       title: t('table:table-item-actions'),
       dataIndex: 'slug',

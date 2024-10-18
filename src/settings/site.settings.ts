@@ -206,60 +206,60 @@ export const siteSettings = {
         ],
       },
 
-      // financial: {
-      //   href: '',
-      //   label: 'text-e-commerce-management',
-      //   icon: 'WithdrawIcon',
-      //   childMenu: [
-      //     {
-      //       href: Routes.tax.list,
-      //       label: 'sidebar-nav-item-taxes',
-      //       icon: 'TaxesIcon',
-      //     },
-      //     {
-      //       href: Routes.shipping.list,
-      //       label: 'sidebar-nav-item-shippings',
-      //       icon: 'ShippingsIcon',
-      //     },
-      //     {
-      //       href: Routes.withdraw.list,
-      //       label: 'sidebar-nav-item-withdraws',
-      //       icon: 'WithdrawIcon',
-      //     },
-      //     {
-      //       href: '',
-      //       label: 'sidebar-nav-item-refunds',
-      //       icon: 'RefundsIcon',
-      //       childMenu: [
-      //         {
-      //           href: Routes.refund.list,
-      //           label: 'text-reported-refunds',
-      //           icon: 'RefundsIcon',
-      //         },
-      //         {
-      //           href: Routes.refundPolicies.list,
-      //           label: 'sidebar-nav-item-refund-policy',
-      //           icon: 'AuthorIcon',
-      //         },
-      //         {
-      //           href: Routes.refundPolicies.create,
-      //           label: 'text-new-refund-policy',
-      //           icon: 'RefundsIcon',
-      //         },
-      //         {
-      //           href: Routes.refundReasons.list,
-      //           label: 'text-refund-reasons',
-      //           icon: 'RefundsIcon',
-      //         },
-      //         {
-      //           href: Routes.refundReasons.create,
-      //           label: 'text-new-refund-reasons',
-      //           icon: 'RefundsIcon',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
+      financial: {
+        href: '',
+        label: 'text-e-commerce-management',
+        icon: 'WithdrawIcon',
+        childMenu: [
+          {
+            href: Routes.tax.list,
+            label: 'sidebar-nav-item-taxes',
+            icon: 'TaxesIcon',
+          },
+          {
+            href: Routes.shipping.list,
+            label: 'sidebar-nav-item-shippings',
+            icon: 'ShippingsIcon',
+          },
+          // {
+          //   href: Routes.withdraw.list,
+          //   label: 'sidebar-nav-item-withdraws',
+          //   icon: 'WithdrawIcon',
+          // },
+          // {
+          //   href: '',
+          //   label: 'sidebar-nav-item-refunds',
+          //   icon: 'RefundsIcon',
+          //   childMenu: [
+          //     {
+          //       href: Routes.refund.list,
+          //       label: 'text-reported-refunds',
+          //       icon: 'RefundsIcon',
+          //     },
+          //     {
+          //       href: Routes.refundPolicies.list,
+          //       label: 'sidebar-nav-item-refund-policy',
+          //       icon: 'AuthorIcon',
+          //     },
+          //     {
+          //       href: Routes.refundPolicies.create,
+          //       label: 'text-new-refund-policy',
+          //       icon: 'RefundsIcon',
+          //     },
+          //     {
+          //       href: Routes.refundReasons.list,
+          //       label: 'text-refund-reasons',
+          //       icon: 'RefundsIcon',
+          //     },
+          //     {
+          //       href: Routes.refundReasons.create,
+          //       label: 'text-new-refund-reasons',
+          //       icon: 'RefundsIcon',
+          //     },
+          //   ],
+          // },
+        ],
+      },
 
       layout: {
         href: '',
@@ -410,6 +410,16 @@ export const siteSettings = {
           {
             href: Routes.publications.list,
             label: 'sidebar-nav-item-publications',
+            icon: 'OrdersIcon',
+          },
+          {
+            href: Routes.vacancy.list,
+            label: 'sidebar-nav-item-vacancies',
+            icon: 'OrdersIcon',
+          },
+          {
+            href: Routes.applications.list,
+            label: 'sidebar-nav-item-applications',
             icon: 'OrdersIcon',
           },
           

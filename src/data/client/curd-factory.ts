@@ -1,4 +1,4 @@
-import type { GetParams, PaginatorInfo } from '@/types';
+import type { GetParams, GetParamsId, PaginatorInfo } from '@/types';
 import { HttpClient } from './http-client';
 
 interface LanguageParam {
@@ -17,6 +17,9 @@ export function crudFactory<Type, QueryParams extends LanguageParam, InputType>(
     },
     get({ slug, language }: GetParams) {
       return HttpClient.get<Type>(`${endpoint}/${slug}`, { language });
+    },
+    getId({ id, language }: GetParamsId) {
+      return HttpClient.get<Type>(`${endpoint}/${id}`, { language });
     },
     create(data: InputType) {
       return HttpClient.post<Type>(endpoint, data);

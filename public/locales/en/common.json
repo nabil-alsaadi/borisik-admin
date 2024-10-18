@@ -549,5 +549,29 @@
   "text-image-uploading-message": "Please wait! Image is uploading",
   "text-publications": "Publications",
   "sidebar-nav-item-publications": "Publications",
-  "text-content-career": "Content & Careers"
+  "text-content-career": "Content & Careers",
+
+  "text-vacancies": "Vacancies",
+  "sidebar-nav-item-vacancies": "Vacancies",
+  "filter-by-vacancy-placeholder": "Filter by vacancy",
+  "filter-by-vacancy": "Filter by vacancy",
+  "sidebar-nav-item-applications": "Vacancy Applications",
+  
+  "text-resume" : "Resume",
+  "text-applicant-details" : "Application Details",
+  "text-phone" : "Phone",
+  "text-vacancy-details": "Vacancy details",
+  "text-vacancy-title" : "Vacancy title",
+  "text-vacancy-location" : "Vacnacy location",
+  "text-cover-letter" : "Cover letter",
+  
+
+  "text-citizenship": "Citizenship",
+  "text-marital-status": "Marital Status",
+  "text-education": "Education",
+  "text-employment-record-book": "Employment Record Book",
+  "text-medical-book": "Medical Book",
+  "text-smoking": "Smoking",
+  "text-alcohol-consumption": "Alcohol Consumption",
+  "text-emergency-phone": "Emergency Phone"
 }

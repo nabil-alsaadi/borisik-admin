@@ -29,6 +29,9 @@ export default function LanguageSwitcher() {
     resetCart();
     router.push(asPath, undefined, {
       locale: values?.value,
+    }).then(() => {
+      // Reload the page after the language has been changed
+      router.reload();
     });
   }
 

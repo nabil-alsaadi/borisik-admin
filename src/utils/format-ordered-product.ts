@@ -59,3 +59,24 @@ export function applyPublicationTranslations(publication: any, language: string 
 
   return publication;
 }
+
+export function applyVacancyTranslations(vacancy: any, language: string = "en"): any {
+  const translations = vacancy?.translations || {};
+
+  // Try to get the translation for the provided language
+  const translation = translations[language];
+  console.log('translation==========',vacancy,translation,translations,translations?.['en']?.title)
+  // Validate if the translation exists for the specified language
+  if (translation) {
+    vacancy.title = translation.title || translations['en']?.title || defaultTranslateValue;
+    vacancy.description = translation.description || translations['en']?.description || defaultTranslateValue;
+    vacancy.requirements = translation.requirements || translations['en']?.requirements || [];
+  } else {
+      // Fallback to English translation or default if English doesn't exist
+      vacancy.title = translations?.['en']?.title || defaultTranslateValue;
+      vacancy.description = translations?.['en']?.description || defaultTranslateValue;
+      vacancy.requirements = translations?.['en']?.requirements || [];
+  }
+
+  return vacancy;
+}

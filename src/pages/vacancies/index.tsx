@@ -19,7 +19,9 @@ import { Config } from '@/config';
 import PageHeading from '@/components/common/page-heading';
 import { usePublicationsQuery } from '@/data/publications';
 import PublicationList from '@/components/publication/publication-list';
-export default function Publications() {
+import { useVacanciesQuery } from '@/data/vacancy';
+import VacancyList from '@/components/vacancy/vacancy-list';
+export default function Vacancies() {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,7 +29,7 @@ export default function Publications() {
   const [orderBy, setOrder] = useState('created_at');
   const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
 
-  const { publications, loading, paginatorInfo, error } = usePublicationsQuery({
+  const { vacancies, loading, error } = useVacanciesQuery({
     limit: LIMIT,
     name: searchTerm,
     page,
@@ -38,52 +40,39 @@ export default function Publications() {
   if (loading) return <Loader text={t('common:text-loading')} />;
   if (error) return <ErrorMessage message={error.message} />;
 
-  function handleSearch({ searchText }: { searchText: string }) {
-    setSearchTerm(searchText);
-  }
-
-  function handlePagination(current: number) {
-    setPage(current);
-  }
 
   return (
     <>
-      <Card className="mb-8 flex flex-col items-center justify-between md:flex-row">
+      <Card className="mb-8 flex flex-col items-center md:flex-row">
         <div className="mb-4 md:mb-0 md:w-1/4">
-          <PageHeading title={t('common:text-publications')} />
+          <PageHeading title={t('common:text-vacancies')} />
         </div>
 
-        <div className="flex w-full flex-col items-center space-y-4 ms-auto md:flex-row md:space-y-0 xl:w-1/2">
-          {/* <Search
-            onSearch={handleSearch}
-            placeholderText={t('form:input-placeholder-search-name')}
-          /> */}
+        <div className="flex w-full flex-col items-center space-y-4 ms-auto md:flex-row md:space-y-0 xl:w-1/2 justify-end">
 
           {locale === Config.defaultLanguage && (
             <LinkButton
-              href={`${Routes.publications.create}`}
-              className="h-12 w-full md:w-auto md:ms-auto"
+              href={`${Routes.vacancy.create}`}
+              className="h-12 w-full md:w-auto md:ms-6"
             >
-              <span>+ {t('form:button-label-add-publication')}</span>
+              <span>+ {t('form:button-label-add-vacancy')}</span>
             </LinkButton>
           )}
         </div>
       </Card>
 
-      <PublicationList
-        publications={publications}
-        paginatorInfo={paginatorInfo}
-        onPagination={handlePagination}
+      <VacancyList
+        vacancies={vacancies}
         onOrder={setOrder}
         onSort={setColumn}
       />
     </>
   );
 }
-Publications.authenticate = {
+Vacancies.authenticate = {
   permissions: adminOnly,
 };
-Publications.Layout = Layout;
+Vacancies.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {

@@ -161,6 +161,10 @@ export interface GetParams {
   slug: string;
   language: string;
 }
+export interface GetParamsId {
+  id: string;
+  language: string;
+}
 
 export interface QueryOptions {
   language: string;
@@ -245,6 +249,43 @@ export interface Category {
       details: string;
     };
   };
+}
+
+export interface Vacancy {
+  id: string;
+  title: string;
+  description: string;
+  requirements: string[];
+  location: string;
+  translations?: {
+      [languageCode: string]: {
+          title: string;
+          description?: string;
+          requirements: string[];
+      };
+  };
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface VacancyApplication {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  resume: Attachment;
+  coverLetter: string;
+  vacancy: Vacancy;
+  maritalStatus: string;
+  education: string;
+  citizenship: string;
+  employmentRecordBook: string;
+  medicalBook: string;
+  smoking: string;
+  alcoholConsumption: string;
+  emergencyPhone: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export interface Attribute {
@@ -919,6 +960,20 @@ export interface CreateCategoryInput {
   details?: string;
   image?: AttachmentInput;
   icon?: string;
+}
+
+export interface CreateVacancyInput {
+  title: string;
+  description: string;
+  requirements: string[];
+  location: string;
+  translations?: {
+    [languageCode: string]: {
+        title: string;
+        description?: string;
+        requirements: string[];
+    };
+  };
 }
 
 export interface CreateWithdrawInput {
@@ -1732,6 +1787,13 @@ export interface CategoryQueryOptions extends QueryOptions {
   self: string;
 }
 
+export interface ApplicationQueryOptions extends QueryOptions {
+  name: string;
+  email: string;
+  vacancy: string;
+  self: string;
+}
+
 export interface ConversationQueryOptions extends QueryOptions {
   search?: string;
 }
@@ -1984,6 +2046,8 @@ export interface TermsAndConditionsPaginator
   extends PaginatorInfo<TermsAndConditions> {}
 
 export interface ProductPaginator extends PaginatorInfo<Product> {}
+
+export interface ApplicationPaginator extends PaginatorInfo<VacancyApplication> {}
 
 export interface CategoryPaginator extends PaginatorInfo<Category> {}
 

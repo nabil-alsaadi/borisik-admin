@@ -87,15 +87,7 @@ const OrderList = ({
       width: 200,
     },
     {
-      title: (
-        <TitleWithSort
-          title={t('table:table-item-customer')}
-          ascending={
-            sortingObj.sort === SortOrder.Asc && sortingObj.column === 'name'
-          }
-          isActive={sortingObj.column === 'name'}
-        />
-      ),
+      title: t('table:table-item-customer'),
       dataIndex: 'customer',
       key: 'name',
       align: alignLeft,

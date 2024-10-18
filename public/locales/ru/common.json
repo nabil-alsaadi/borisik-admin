@@ -555,6 +555,29 @@
   "text-image-uploading-message": "Пожалуйста, подождите! Изображение загружается",
   "text-publications": "Публикации",
   "sidebar-nav-item-publications": "Публикации",
-  "text-content-career": "Контент и карьера"
+  "text-content-career": "Контент и карьера",
 
+
+  "text-vacancies": "Вакансии",
+  "sidebar-nav-item-vacancies": "Вакансии",
+  "filter-by-vacancy-placeholder": "Фильтр по вакансии",
+  "filter-by-vacancy": "Фильтр по вакансии",
+  "sidebar-nav-item-applications": "Заявки на вакансии",
+
+  "text-resume": "Резюме",
+  "text-applicant-details": "Детали заявки",
+  "text-phone": "Телефон",
+  "text-vacancy-details": "Детали вакансии",
+  "text-vacancy-title": "Название вакансии",
+  "text-vacancy-location": "Местоположение вакансии",
+  "text-cover-letter": "Сопроводительное письмо",
+  
+  "text-citizenship": "Гражданство",
+  "text-marital-status": "Семейное положение",
+  "text-education": "Образование",
+  "text-employment-record-book": "Трудовая книжка",
+  "text-medical-book": "Медицинская книжка",
+  "text-smoking": "Курение",
+  "text-alcohol-consumption": "Употребление алкоголя",
+  "text-emergency-phone": "Экстренный телефон"
 }

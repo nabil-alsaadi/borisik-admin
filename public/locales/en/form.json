@@ -664,5 +664,15 @@
   "publication-image-helper-text": "Add Publication's  image from here.",
   "publication-form-description-details": "Publication information from here.",
   "form-title-create-publication": "Create Publication",
-  "form-title-update-publication": "Update Publication"
+  "form-title-update-publication": "Update Publication",
+
+
+  "button-label-add-vacancy": "Add Vacancy",
+  "button-label-add-requirement": "Add Requirement",
+  "placeholder-requirement": "Enter a requirement",
+  "input-label-requirements": "Requirements",
+  "input-label-location": "Location",
+  "vacancy-form-description-details": "Add vacancy information here.",
+  "button-label-update-vacancy": "Update Vacancy",
+  "input-label-applications": "Vacancy Applications"
 }

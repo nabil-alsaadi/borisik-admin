@@ -74,6 +74,7 @@ interface SearchParamOptions {
   'users.id': string;
   product_type: string;
   is_read: boolean;
+  vacancy: string;
 }
 
 export class HttpClient {

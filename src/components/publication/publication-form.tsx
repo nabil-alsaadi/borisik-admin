@@ -58,7 +58,7 @@ type FormValues = {
   image: AttachmentInput;
   translations?: {
     [key: string]: {
-      name: string;
+      title: string;
       description: string;
     };
   };
@@ -142,8 +142,8 @@ export default function CreateOrUpdatePublicationForm({ initialValues }: IProps)
       },
       translations: {
         [locale]: {
-          name: values.title,
-          details: values.description,
+          title: values.title,
+          description: values.description,
         },
         ...values?.translations,
       },

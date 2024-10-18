@@ -73,7 +73,7 @@ const UserList = ({
       dataIndex: 'id',
       key: 'id',
       align: alignLeft,
-      width: 150,
+      width: 200,
       onHeaderCell: () => onHeaderClick('id'),
       render: (id: number) => `#${t('table:table-item-id')}: ${id}`,
     },
@@ -132,13 +132,13 @@ const UserList = ({
         );
       },
     },
-    {
-      title: t('table:table-item-available_wallet_points'),
-      dataIndex: ['wallet', 'available_points'],
-      key: 'available_wallet_points',
-      align: 'center',
-      width: 150,
-    },
+    // {
+    //   title: t('table:table-item-available_wallet_points'),
+    //   dataIndex: ['wallet', 'available_points'],
+    //   key: 'available_wallet_points',
+    //   align: 'center',
+    //   width: 150,
+    // },
     {
       title: (
         <TitleWithSort
