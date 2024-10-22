@@ -12,7 +12,6 @@ import { Table } from '@/components/ui/table';
 import { clearCheckoutAtom } from '@/contexts/checkout';
 import { useCart } from '@/contexts/quick-cart/cart.context';
 import {
-  useDownloadInvoiceMutation,
   useOrderQuery,
   useUpdateOrderMutation,
 } from '@/data/order';
@@ -55,14 +54,14 @@ export default function OrderDetailsPage() {
     isLoading: loading,
     error,
   } = useOrderQuery({ id: query.orderId as string, language: locale! });
-  const { refetch } = useDownloadInvoiceMutation(
-    {
-      order_id: query.orderId as string,
-      isRTL,
-      language: locale!,
-    },
-    { enabled: false }
-  );
+  // const { refetch } = useDownloadInvoiceMutation(
+  //   {
+  //     order_id: query.orderId as string,
+  //     isRTL,
+  //     language: locale!,
+  //   },
+  //   { enabled: false }
+  // );
 
   const {
     handleSubmit,
@@ -134,8 +133,8 @@ export default function OrderDetailsPage() {
   if (error) return <ErrorMessage message={error.message} />;
 
   async function handleDownloadInvoice() {
-    const { data } = await refetch();
-
+    //const { data } = await refetch();
+    const data = order?.invoice_url
     if (data) {
       const a = document.createElement('a');
       a.href = data;

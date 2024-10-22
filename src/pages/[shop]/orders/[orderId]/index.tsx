@@ -23,7 +23,6 @@ import {
   hasAccess,
 } from '@/utils/auth-utils';
 import {
-  useDownloadInvoiceMutation,
   useUpdateOrderMutation,
 } from '@/data/order';
 import { useOrderQuery } from '@/data/order';
@@ -57,14 +56,6 @@ export default function OrderDetailsPage() {
     isLoading: loading,
     error,
   } = useOrderQuery({ id: query.orderId as string, language: locale! });
-  const { refetch } = useDownloadInvoiceMutation(
-    {
-      order_id: query.orderId as string,
-      language: locale!,
-      isRTL,
-    },
-    { enabled: false }
-  );
 
   const {
     handleSubmit,
@@ -76,7 +67,7 @@ export default function OrderDetailsPage() {
   });
 
   async function handleDownloadInvoice() {
-    const { data } = await refetch();
+    const data = order?.invoice_url
 
     if (data) {
       const a = document.createElement('a');

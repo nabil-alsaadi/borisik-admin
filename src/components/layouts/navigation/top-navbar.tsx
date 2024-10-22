@@ -198,9 +198,9 @@ const Navbar = () => {
                   <VisitStore />
                 </div>
 
-                {options?.pushNotification?.all?.order ||
+                {/* {options?.pushNotification?.all?.order ||
                 options?.pushNotification?.all?.message ||
-                options?.pushNotification?.all?.storeNotice ? (
+                options?.pushNotification?.all?.storeNotice ? ( */}
                   <div className="flex items-center gap-3 px-0.5 py-3 sm:relative sm:border-gray-200/80 sm:py-3.5 sm:px-6 sm:border-s lg:py-5">
                     {options?.pushNotification?.all?.order ? (
                       <RecentOrderBar user={data} />
@@ -214,15 +214,15 @@ const Navbar = () => {
                       ''
                     )}
 
-                    {!hasAccess(adminOnly, permissions) ? (
-                      options?.pushNotification?.all?.storeNotice ? (
+                    {/* {!hasAccess(adminOnly, permissions) ? (
+                      options?.pushNotification?.all?.storeNotice ? ( */}
                         <StoreNoticeBar user={data} />
-                      ) : (
+                      {/* ) : (
                         ''
                       )
-                    ) : null}
+                    ) : null} */}
                   </div>
-                ) : null}
+                {/* ) : null} */}
               </>
             )}
           </div>
