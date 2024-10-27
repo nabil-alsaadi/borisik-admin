@@ -40,4 +40,5 @@ export const checkIsMaintenanceModeStart = atom(false);
 export const QUERY_CLIENT_OPTIONS = {
   refetchOnWindowFocus: true, 
   staleTime: 1000 * 60 * 30,
+  retry: 1
 }

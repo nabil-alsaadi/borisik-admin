@@ -25,7 +25,6 @@ export const useMeQuery = () => {
   const router = useRouter();
 
   return useQuery<User, Error>([API_ENDPOINTS.ME], userClient.me, {
-    retry: 2,
     // enabled: isAuth(),
     ...QUERY_CLIENT_OPTIONS,
     onSuccess: () => {
@@ -39,20 +38,23 @@ export const useMeQuery = () => {
     },
 
     onError: (err) => {
-      queryClient.clear();
-      router.replace(Routes.login);
-      console.log('if (axios.isAxiosError(err)) {',err,axios.isAxiosError(err))
+      
+      // console.log('if (axios.isAxiosError(err)) {',err,axios.isAxiosError(err))
       if (axios.isAxiosError(err)) {
         // if (err.response?.status === 417) {
         //   router.replace(Routes.verifyLicense);
         //   return;
         // }
 
-        // if (err.response?.status === 409) {
-        //   setEmailVerified(false);
-        //   router.replace(Routes.verifyEmail);
-        //   return;
-        // }
+        if (err.response?.status === 409) {
+          setEmailVerified(false);
+          router.replace(Routes.verifyEmail);
+          return;
+        }
+        queryClient.clear();
+        router.replace(Routes.login);
+      }
+      else {
         queryClient.clear();
         router.replace(Routes.login);
       }
