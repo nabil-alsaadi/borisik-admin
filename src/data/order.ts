@@ -18,6 +18,7 @@ import { applyOrderTranslations } from '@/utils/format-ordered-product';
 import { useState, useEffect } from 'react';
 import { collection, doc, getDocs, onSnapshot, orderBy, query, where, limit as firestoreLimit, updateDoc } from 'firebase/firestore';
 import { firestore } from '../../firebaseConfig';
+import { isAdminAuth } from '@/utils/auth-utils';
 
 // export const useOrdersQuery = (
 //   params: Partial<OrderQueryOptions>,
@@ -99,7 +100,7 @@ export const useOrdersQuery = (params: Partial<OrderQueryOptions>, options: any 
           const startIndex = (page - 1) * limit;
           const paginatedOrders = allOrders.slice(startIndex, startIndex + limit);
           allOrders.slice(0, 5).forEach((order) => {
-            if (!order.is_seen && !notifiedOrderIds.has(order.id)) {
+            if (!order.is_seen && !notifiedOrderIds.has(order.id) && isAdminAuth()) {
               toast.info(`New order received: #${order.tracking_number}`, {
                 position: "top-right",
                 autoClose: 5000,

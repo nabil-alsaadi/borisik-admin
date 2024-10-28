@@ -70,11 +70,11 @@ export function isAuthenticated(_cookies: any) {
   );
 }
 
-// export function isAuth() {
-//   const _cookies = getAuthCredentials('en')
-//   return (
-//     !!_cookies[TOKEN] &&
-//     Array.isArray(_cookies[PERMISSIONS]) &&
-//     !!_cookies[PERMISSIONS].length
-//   );
-// }
+export function isAdminAuth(): boolean {
+  const authCred = Cookie.get(AUTH_CRED);
+  
+  if (!authCred) return false;
+
+  const { token, permissions } = JSON.parse(authCred);
+  return !!token && Array.isArray(permissions) && permissions.length > 0;
+}
