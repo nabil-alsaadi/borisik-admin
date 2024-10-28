@@ -707,6 +707,7 @@ export interface Order {
   shop?: Shop;
   note?: string;
   invoice_url?: string;
+  is_seen?: boolean;
 }
 
 export interface NotifyLogs {

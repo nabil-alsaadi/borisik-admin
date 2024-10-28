@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 import { Routes } from '@/config/routes';
 import { applyOrderTranslations } from '@/utils/format-ordered-product';
 import { useState, useEffect } from 'react';
-import { collection, doc, getDocs, onSnapshot, orderBy, query, where, limit as firestoreLimit } from 'firebase/firestore';
+import { collection, doc, getDocs, onSnapshot, orderBy, query, where, limit as firestoreLimit, updateDoc } from 'firebase/firestore';
 import { firestore } from '../../firebaseConfig';
 
 // export const useOrdersQuery = (
@@ -52,7 +52,7 @@ export const useOrdersQuery = (params: Partial<OrderQueryOptions>, options: any 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [totalOrders, setTotalOrders] = useState<number>(0); // Total number of orders
-
+  const notifiedOrderIds = new Set<string>();
   const {
     limit = PAGE_LIMIT,
     page = 1,
@@ -98,7 +98,21 @@ export const useOrdersQuery = (params: Partial<OrderQueryOptions>, options: any 
           // Slice to return the requested page data
           const startIndex = (page - 1) * limit;
           const paginatedOrders = allOrders.slice(startIndex, startIndex + limit);
+          allOrders.slice(0, 5).forEach((order) => {
+            if (!order.is_seen && !notifiedOrderIds.has(order.id)) {
+              toast.info(`New order received: #${order.tracking_number}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
 
+              notifiedOrderIds.add(order.id);
+            }
+          });
           setOrders(paginatedOrders);
           setIsLoading(false);
         });

@@ -310,3 +310,8 @@
 }
 @import './custom-plugins.css';
 @import './rich-text-editor.css';
+
+
+.rc-table tbody tr.unseen-row td {
+  background-color: #9bc99e !important; /* Light yellow background */
+}

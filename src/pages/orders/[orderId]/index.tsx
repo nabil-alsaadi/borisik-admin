@@ -13,6 +13,7 @@ import { clearCheckoutAtom } from '@/contexts/checkout';
 import { useCart } from '@/contexts/quick-cart/cart.context';
 import {
   useOrderQuery,
+  useOrderSeen,
   useUpdateOrderMutation,
 } from '@/data/order';
 import { NoDataFound } from '@/components/icons/no-data-found';
@@ -31,6 +32,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFormatPhoneNumber } from '@/utils/format-phone-number';
+import { formatDate } from '@/lib/date-utils';
 
 type FormValues = {
   order_status: any;
@@ -54,6 +56,15 @@ export default function OrderDetailsPage() {
     isLoading: loading,
     error,
   } = useOrderQuery({ id: query.orderId as string, language: locale! });
+
+  const {readOrderNotice} = useOrderSeen();
+  useEffect(() => {
+    console.log('!order?.is_seen',!order?.is_seen)
+    if (!order?.is_seen && order?.id) {
+      console.log('order?.id',order?.id)
+      readOrderNotice({id: order?.id ?? ''})
+    }
+  },[order?.id])
   // const { refetch } = useDownloadInvoiceMutation(
   //   {
   //     order_id: query.orderId as string,
@@ -215,32 +226,32 @@ export default function OrderDetailsPage() {
             OrderStatus.CANCELLED,
             OrderStatus.REFUNDED,
           ].includes(order?.order_status! as OrderStatus) && (
-            <form
-              onSubmit={handleSubmit(ChangeStatus)}
-              className="flex w-full items-start ms-auto lg:w-2/4"
-            >
-              <div className="z-20 w-full me-5">
-                <SelectInput
-                  name="order_status"
-                  control={control}
-                  getOptionLabel={(option: any) => t(option.name)}
-                  getOptionValue={(option: any) => option.status}
-                  options={ORDER_STATUS.slice(0, 6)}
-                  placeholder={t('form:input-placeholder-order-status')}
-                />
+              <form
+                onSubmit={handleSubmit(ChangeStatus)}
+                className="flex w-full items-start ms-auto lg:w-2/4"
+              >
+                <div className="z-20 w-full me-5">
+                  <SelectInput
+                    name="order_status"
+                    control={control}
+                    getOptionLabel={(option: any) => t(option.name)}
+                    getOptionValue={(option: any) => option.status}
+                    options={ORDER_STATUS.slice(0, 6)}
+                    placeholder={t('form:input-placeholder-order-status')}
+                  />
 
-                <ValidationError message={t(errors?.order_status?.message)} />
-              </div>
-              <Button loading={updating}>
-                <span className="hidden sm:block">
-                  {t('form:button-label-change-status')}
-                </span>
-                <span className="block sm:hidden">
-                  {t('form:form:button-label-change')}
-                </span>
-              </Button>
-            </form>
-          )}
+                  <ValidationError message={t(errors?.order_status?.message)} />
+                </div>
+                <Button loading={updating}>
+                  <span className="hidden sm:block">
+                    {t('form:button-label-change-status')}
+                  </span>
+                  <span className="block sm:hidden">
+                    {t('form:form:button-label-change')}
+                  </span>
+                </Button>
+              </form>
+            )}
         </div>
 
         <div className="my-5 flex items-center justify-center lg:my-10">
@@ -324,6 +335,7 @@ export default function OrderDetailsPage() {
                     </div>
                   </>
                 )}
+
               </div>
             </>
           )}
@@ -343,50 +355,78 @@ export default function OrderDetailsPage() {
         )}
 
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
+
+          {/* Order Details Section */}
           <div className="mb-10 w-full sm:mb-0 sm:w-1/2 sm:pe-8">
-            <h3 className="mb-3 border-b border-border-200 pb-2 font-semibold text-heading">
+            <h3 className="mb-4 border-b border-border-200 pb-2 text-lg font-semibold text-heading">
               {t('text-order-details')}
             </h3>
 
-            <div className="flex flex-col items-start space-y-1 text-sm text-body">
-              <span>
-                {formatString(order?.products?.length, t('text-item'))}
-              </span>
-              <span>{order?.delivery_time}</span>
-              <span>
-                {`${t('text-payment-method')}:  ${order?.payment_gateway}`}
-              </span>
+            <div className="space-y-4 text-sm text-body">
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-heading">{t('text-items')}:</span>
+                <span className="ml-2">{formatString(order?.products?.length, t('text-item'))}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-heading">{t('text-delivery-time')}:</span>
+                <span className="ml-2">{order?.delivery_time}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-heading">{t('text-payment-method')}:</span>
+                <span className="ml-2">{order?.payment_gateway}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-heading">{t('text-payment-status')}:</span>
+                <span className={`ml-2 font-semibold ${order?.payment_status === 'payment-success' ? 'text-green-500' : 'text-red-500'
+                  }`}>
+                  {order?.payment_status}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-heading">{t('text-date')}:</span>
+                <span className="ml-2">{formatDate(order?.created_at ?? '')}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-heading">{t('text-last-update')}:</span>
+                <span className="ml-2">{formatDate(order?.updated_at ?? '')}</span>
+              </div>
             </div>
           </div>
 
-          {/* <div className="mb-10 w-full sm:mb-0 sm:w-1/2 sm:pe-8">
-            <h3 className="mb-3 border-b border-border-200 pb-2 font-semibold text-heading">
-              {t('common:billing-address')}
-            </h3>
-
-            <div className="flex flex-col items-start space-y-1 text-sm text-body">
-              <span>{order?.customer_name}</span>
-              {order?.billing_address && (
-                <span>{formatAddress(order.billing_address)}</span>
-              )}
-              {order?.customer_contact && <span>{phoneNumber}</span>}
-            </div>
-          </div> */}
-
+          {/* Shipping Address Section */}
           <div className="w-full sm:w-1/2 sm:ps-8">
-            <h3 className="mb-3 border-b border-border-200 pb-2 font-semibold text-heading text-start sm:text-end">
+            <h3 className="mb-4 border-b border-border-200 pb-2 text-lg font-semibold text-heading text-start sm:text-start">
               {t('common:shipping-address')}
             </h3>
 
-            <div className="flex flex-col items-start space-y-1 text-sm text-body text-start sm:items-end sm:text-end">
-              <span>{order?.customer_name}</span>
+            <div className="space-y-2 text-sm text-body text-start sm:text-end">
+              <div className="flex items-start sm:items-end">
+                <span className="font-medium text-heading">{t('common:customer-name')}:</span>
+                <span className="ml-2">{order?.customer_name}</span>
+              </div>
+
               {order?.shipping_address && (
-                <span>{formatAddress(order.shipping_address)}</span>
+                <div className="flex items-start sm:items-end">
+                  <span className="font-medium text-heading">{t('common:address')}:</span>
+                  <span className="ml-2">{formatAddress(order.shipping_address)}</span>
+                </div>
               )}
-              {order?.customer_contact && <span>{phoneNumber}</span>}
+
+              {order?.customer_contact && (
+                <div className="flex items-start sm:items-end">
+                  <span className="font-medium text-heading">{t('common:contact')}:</span>
+                  <span className="ml-2">{phoneNumber}</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
+
       </Card>
     </>
   );

@@ -251,12 +251,11 @@ const OrderList = ({
             </div>
           )}
           data={orders}
+          rowClassName={(record) => (record.is_seen ? '' : 'unseen-row')}
           rowKey="id"
           scroll={{ x: 1000 }}
-          expandable={{
-            expandedRowRender: () => '',
-            rowExpandable: rowExpandable,
-          }}
+          expandIcon={() => null}
+          
         />
       </div>
 
